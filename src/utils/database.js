@@ -6,7 +6,7 @@ require("dotenv").config();
 //necestiamos un objeto de configuracin que no es mas que las credenciales de mi base de datos
 const db = new Sequelize({
     database: process.env.DB_NAME,
-    username: process.env.DB_USERNAME,
+    username: process.env.DB_USER,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT, //nombre de mi base de datos creada
     password: process.env.DB_PASSWORD,
