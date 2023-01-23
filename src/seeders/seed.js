@@ -1,11 +1,11 @@
 const db = require('../utils/database');
 const Users = require('../models/users.models');
-// const Categories = require('../models/categories.models');
 const Todos = require('../models/todos.models');
-// const todos-categories = require('../models/todos-categories.models');
-const initModels = require('../models/init.Models');
+const Categories = require('../models/categories.models');
+const TodosCategories = require('../models/todos-categories.models');
+// const initModels = require('../models/init.Models');
 
-initModels();
+// initModels();
 
 //construir aqui modelos de informacion
 
@@ -38,28 +38,28 @@ const todos = [
 //     { street: "Madero", number: 157, userId: 3},
 // ];
 
-// const categories = [
-//     { name: "personal" }, // id 1
-//     { name: "escuela" }, // id 2
-//     { name: "salud" }, // id 3
-//     { name: "trabajo" }, // id 4
-//     { name: "hogar" }, // id 5
-//     { name: "deporte" }, // id 6
-//     { name: "ocio" }, // id 7
-//     { name: "financiero" }, // id 8
-// ];
+const categories = [
+    { name: "personal", userId: 1}, 
+    { name: "escuela", userId: 2 }, 
+    { name: "salud", userId: 3 }, 
+    { name: "trabajo", userId: 1 }, 
+    { name: "hogar", userId: 2 },
+    { name: "deporte", userId: 3 },
+    { name: "ocio", userId: 1 },
+    { name: "financiero", userId: 2 },
+];
 
-// const tc = [
-//     { tasksId: 1, categoryId: 1 },
-//     { tasksId: 1, categoryId: 2 },
-//     { tasksId: 1, categoryId: 4 },
-//     { tasksId: 2, categoryId: 1 },
-//     { tasksId: 2, categoryId: 3 },
-//     { tasksId: 2, categoryId: 6 },
-//     { tasksId: 2, categoryId: 7 },
-//     { tasksId: 3, categoryId: 1 },
-//     { tasksId: 3, categoryId: 3 },
-// ];
+const todoscategories = [
+    { todoId: 1, categoryId: 8 },
+    { todoId: 1, categoryId: 2 },
+    { todoId: 1, categoryId: 4 },
+    { todoId: 2, categoryId: 1 },
+    { todoId: 2, categoryId: 3 },
+    { todoId: 2, categoryId: 6 },
+    { todoId: 2, categoryId: 7 },
+    { todoId: 3, categoryId: 1 },
+    { todoId: 3, categoryId: 3 },
+];
 
 // metodos: create es para crear 
 //findOne, findAll, findByPk
@@ -75,7 +75,14 @@ db.sync({ force: true })
             todos.forEach((todo) => Todos.create(todo));
         }, 100);
 
-        
+        setTimeout(() => {
+            categories.forEach((category) => Categories.create(category));
+        }, 300);
+
+        setTimeout(() => {
+            todoscategories.forEach((tc) => TodosCategories.create(tc));
+        }, 500);        
     })
+
     .catch((error) => console.log(error));
 

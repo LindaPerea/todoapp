@@ -3,7 +3,7 @@ const { DataTypes } = require ('sequelize');
 const Todos = require('./todos.models');
 const Categories = require('./categories.models')
 
-const TodosCategories = db.define('todos-categories', {
+const TodosCategories = db.define('todos_categories', {
     id: {
         primaryKey: true,
         type:DataTypes.INTEGER,
